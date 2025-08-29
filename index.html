@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>صفحة الكوبونات</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      background: #f5f5f5;
+    }
+    input, button {
+      padding: 10px;
+      margin: 5px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <h2>🎁 أدخل الكوبون لمعرفة جائزتك 🎁</h2>
+  
+  <input type="text" id="coupon" placeholder="أدخل الكوبون">
+  <button onclick="checkCoupon()">تحقق</button>
+  
+  <div id="result"></div>
+
+  <script>
+    function checkCoupon() {
+      const coupon = document.getElementById("coupon").value.trim();
+      const result = document.getElementById("result");
+
+      // قائمة الكوبونات والجوايز
+      const prizes = {
+        "WIN100": "💰 حصلت على 100 ريال",
+        "FREE50": "🎉 قسيمة شراء 50 ريال",
+        "GIFT2025": "🎁 هدية خاصة لك"
+      };
+
+      if (prizes[coupon]) {
+        result.textContent = prizes[coupon];
+        result.style.color = "green";
+      } else {
+        result.textContent = "❌ الكوبون غير صحيح";
+        result.style.color = "red";
+      }
+    }
+  </script>
+</body>
+</html>
