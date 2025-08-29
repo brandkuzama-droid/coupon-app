@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>🎁 صفحة الكوبونات</title>
+  <style>
+    body {
+      font-family: 'Tahoma', sans-serif;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      background: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 380px;
+      border: 2px solid #87181333; /* حدود خفيفة بلون الهوية */
+    }
+
+    .logo {
+      width: 150px;
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      color: #871813;
+      margin-bottom: 20px;
+    }
+
+    input {
+      padding: 12px;
+      width: 80%;
+      border: 2px solid #871813;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      outline: none;
+      text-align: center;
+      font-size: 16px;
+      color: #871813;
+    }
+    input:focus {
+      box-shadow: 0 0 8px rgba(135,24,19,0.4);
+    }
+
+    button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 10px;
+      background: #871813;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #6d1110;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      display: none;
+      padding: 15px;
+      border-radius: 12px;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .success {
+      background: #871813;
+      color: #fff;
+    }
+    .error {
+      background: #f5f5f5;
+      color: #871813;
+      border: 1px solid #871813;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <!-- إضافة الشعار -->
+    <img src="شعار كرزة شفاف.png" alt="شعار كرزة" class="logo">
+
+    <h2>🎁 أدخل الكوبون لمعرفة جائزتك 🎁</h2>
+    <input type="text" id="coupon" placeholder="أدخل الكوبون">
+    <br>
+    <button onclick="checkCoupon()">تحقق</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function checkCoupon() {
+      const coupon = document.getElementById("coupon").value.trim();
+      const result = document.getElementById("result");
+
+      const prizes = {
+        "WIN100": "💰 حصلت على 100 ريال",
+        "FREE50": "🎉 قسيمة شراء 50 ريال",
+        "GIFT2025": "🎁 هدية خاصة لك"
+      };
+
+      if (prizes[coupon]) {
+        result.textContent = prizes[coupon];
+        result.className = "success";
+        result.style.display = "block";
+      } else {
+        result.textContent = "❌ الكوبون غير صحيح";
+        result.className = "error";
+        result.style.display = "block";
+      }
+    }
+  </script>
+</body>
+</html>
